@@ -189,7 +189,9 @@ export const handler = async (event: Event) => {
       transform
         .output(outputPath)
         .on('end', (error) => {
-          console.log('reading output file')
+          if (error) {
+            reject(error)
+          }
           fs.promises.readFile(outputPath).then(resolve).catch(reject)
         })
         .run()
