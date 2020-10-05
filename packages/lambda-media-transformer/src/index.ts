@@ -1,14 +1,12 @@
-import { getType } from './getType'
-import { sharp } from './sharp'
-import type { Metadata } from 'sharp'
-import { checkAndReturn } from './getMetadata'
-import fetch from 'node-fetch'
-import { Readable } from 'stream'
-import { ffmpeg } from './ffmpeg'
 import * as fs from 'fs'
 import * as path from 'path'
+import type { Metadata } from 'sharp'
+import fetch from 'node-fetch'
 import tempy from 'tempy'
-import { bufferToStream } from './bufferToStream'
+import { getType } from './getType'
+import { sharp } from './sharp'
+import { checkAndReturn } from './getMetadata'
+import { ffmpeg } from './ffmpeg'
 
 const imageFormats = ['jpeg', 'png', 'webp']
 const videoFormats = ['mp4']
@@ -28,14 +26,16 @@ interface Event {
  */
 const sourceCloudFrontUrl = 'http://dg5t66o3lxva1.cloudfront.net'
 
-const parseOptions = ({
-  path,
-  queryStringParameters: { w, fm } = { w: undefined, fm: undefined },
-}: Event): {
+const parseOptions = (
+  event: Event,
+): {
   path: string
   width: number | undefined
   format: Format | undefined
 } => {
+  const { path, queryStringParameters } = event || {}
+  const { fm, w } = queryStringParameters || {}
+
   let format: undefined | Format
   if (fm) {
     if (!formats.includes(fm as string)) {
@@ -58,12 +58,12 @@ const getImageMetadata = async (
 }
 
 const getVideoMetadata = async (
-  input: Readable,
+  inputPath: string,
 ): Promise<{ width: number; height: number }> => {
   return new Promise((resolve, reject) =>
     ffmpeg
       .clone()
-      .input(input)
+      .input(inputPath)
       .ffprobe((error, data) => {
         if (error) {
           return reject(error)
@@ -123,7 +123,11 @@ export const handler = async (event: Event) => {
 
   if (type === 'video') {
     const input = await response.buffer()
-    const metadata = await getVideoMetadata(bufferToStream(input))
+    const inputPath = tempy.file({ extension: 'mp4' })
+    const outputPath = tempy.file({ extension: 'mp4' })
+    await fs.promises.writeFile(inputPath, input)
+    const metadata = await getVideoMetadata(inputPath)
+    const outputWidth = getOutputWidth(metadata.width, width)
 
     if (format === 'json') {
       return {
@@ -134,11 +138,6 @@ export const handler = async (event: Event) => {
         body: JSON.stringify(metadata),
       }
     }
-
-    const inputPath = tempy.file({ extension: 'mp4' })
-    const outputPath = tempy.file({ extension: 'mp4' })
-    const outputWidth = getOutputWidth(metadata.width, width)
-    await fs.promises.writeFile(inputPath, input)
 
     // If we want a thumbnail for this video.
     if (imageFormats.includes(format as Format)) {
