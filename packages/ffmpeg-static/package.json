@@ -1,0 +1,45 @@
+{
+  "name": "@dylanvann/ffmpeg-static",
+  "version": "0.0.2",
+  "description": "ffmpeg static binaries.",
+  "keywords": [
+    "ffmpeg",
+    "static",
+    "library",
+    "binary",
+    "binaries",
+    "mac",
+    "linux",
+    "windows"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dylanvann/ffmpeg-static.git"
+  },
+  "license": "GPL-3.0-or-later",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "bin",
+    "index.js",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "test": "tape tests/*"
+  },
+  "devDependencies": {
+    "@derhuerst/http-basic": "^8.2.0",
+    "any-shell-escape": "^0.1.1",
+    "env-paths": "^2.2.0",
+    "eslint": "^7.2.0",
+    "https-proxy-agent": "^5.0.0",
+    "progress": "^2.0.3",
+    "tape": "^4.0.1"
+  },
+  "authors": [
+    "Eugene Ware <eugene@noblesamurai.com>",
+    "joshwnj",
+    "Jannis R <mail@jannisr.de>",
+    "Dylan Vann <dylan@dylanvann.com>"
+  ]
+}

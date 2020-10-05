@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "target": "ESNext",
+    "module": "ESNext",
+    "composite": false,
+    "incremental": false,
+    "lib": ["ESNext"],
+    "strict": true,
+    "sourceMap": true,
+    "declaration": true,
+    "noEmit": true,
+    "emitDeclarationOnly": false,
+    "declarationMap": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "outDir": "dist",
+    "resolveJsonModule": true,
+    "typeRoots": ["node_modules/@types"],
+    "jsx": "react",
+    "esModuleInterop": true,
+    "noUnusedLocals": true,
+    "rootDir": "src",
+    "types": ["node"]
+  },
+  "include": ["src", "test/cli.test.ts", "src/convertFast.test.ts"],
+  "exclude": ["**/*.test.*"]
+}

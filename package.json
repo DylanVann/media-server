@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "wsrun --exclude-missing build",
+    "format": "prettier --write '**/*.{js,jsx,ts,tsx,md,json,css,html,yml}'",
+    "test": "wsrun --exclude-missing --parallel test"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "devDependencies": {
+    "prettier": "^2.1.2",
+    "wsrun": "^5.2.2"
+  }
+}

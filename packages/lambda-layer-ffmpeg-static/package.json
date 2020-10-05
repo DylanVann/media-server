@@ -1,0 +1,14 @@
+{
+  "name": "lambda-layer-ffmpeg-static",
+  "version": "0.0.1",
+  "license": "MIT",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "devDependencies": {
+    "@dylanvann/ffmpeg-static": "^0.0.2",
+    "@vercel/ncc": "^0.24.1",
+    "archiver": "^5.0.2",
+    "execa": "^4.0.3"
+  }
+}

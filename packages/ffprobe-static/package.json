@@ -1,0 +1,40 @@
+{
+  "name": "@dylanvann/ffprobe-static",
+  "version": "0.0.2",
+  "description": "ffprobe static binaries.",
+  "keywords": [
+    "ffprobe",
+    "ffmpeg",
+    "static",
+    "library",
+    "binary",
+    "binaries",
+    "mac",
+    "linux",
+    "windows"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dylanvann/ffprobe-static.git"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "bin",
+    "index.js",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "test": "tape tests/*"
+  },
+  "devDependencies": {
+    "tape": "^4.0.1"
+  },
+  "authors": [
+    "Eugene Ware <eugene@noblesamurai.com>",
+    "joshwnj",
+    "Jannis R <mail@jannisr.de>",
+    "Dylan Vann <dylan@dylanvann.com>"
+  ]
+}
