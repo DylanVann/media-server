@@ -21,7 +21,9 @@ If the need arises support for specifying height (`h`) or cropping logic could b
   - Formats:
     - `webp`
     - `mp4` - Not sure what this will do if you try it on an image.
-    - `json` - Returns original `width` and `height` of the media.
+    - `json` - Returns original `width` and `height` of the media in JSON.
+      - e.g. `{ width: 1920, height: 1080 }`
+      - This can be used to avoid layout shifting while preserving image aspect ratio.
     - `jpeg`
     - `png`
   - Setting an image format when the original is an `mp4` will get a thumbnail from the video.
