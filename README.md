@@ -12,6 +12,10 @@ https://dgf765uuww7bi.cloudfront.net/378f729d3cdd3f97bf01c67b3dafd5e5-prsm-trimm
 
 **Supported parameters:**
 
+Functionality is relatively limited at the moment, only supporting two parameters.
+
+If the need arises support for specifying height (`h`) or cropping logic could be added.
+
 - `w` - Change width while preserving aspect ratio.
 - `fm` - Set the desired format.
   - Formats:
