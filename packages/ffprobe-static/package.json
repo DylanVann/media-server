@@ -29,7 +29,7 @@
     "test": "tape tests/*"
   },
   "devDependencies": {
-    "tape": "^4.0.1"
+    "tape": "^5.0.1"
   },
   "authors": [
     "Eugene Ware <eugene@noblesamurai.com>",
