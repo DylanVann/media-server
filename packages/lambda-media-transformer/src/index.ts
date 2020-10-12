@@ -29,11 +29,12 @@ const sourceCloudFrontUrl = 'http://dg5t66o3lxva1.cloudfront.net'
 const parseOptions = (
   event: Event,
 ): {
-  path: string
+  id: string
   width: number | undefined
   format: Format | undefined
 } => {
-  const { path, queryStringParameters } = event || {}
+  let { path, queryStringParameters } = event || {}
+  path = path.startsWith('/') ? path.replace('/', '') : path
   const { fm, w } = queryStringParameters || {}
 
   let format: undefined | Format
@@ -43,8 +44,11 @@ const parseOptions = (
     }
     format = fm
   }
+  // Version is just used for cache busting.
+  // @ts-ignore
+  const [_version, id] = path.split('/')
   return {
-    path: path.startsWith('/') ? path.replace('/', '') : path,
+    id,
     width: w ? parseInt(w) : undefined,
     format,
   }
@@ -84,7 +88,7 @@ const getOutputWidth = (
 }
 
 export const handler = async (event: Event) => {
-  const { width, path: id, format } = parseOptions(event)
+  const { width, id, format } = parseOptions(event)
   const type = getType(id)
 
   const response = await fetch(`${sourceCloudFrontUrl}/${id}`)
