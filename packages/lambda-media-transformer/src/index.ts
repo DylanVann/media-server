@@ -102,6 +102,7 @@ export const handler = async (event: Event) => {
         statusCode: 200,
         headers: {
           'Content-Type': 'application/json',
+          'Cache-Control': 'max-age=31536000',
         },
         body: JSON.stringify(metadata),
       }
@@ -119,6 +120,7 @@ export const handler = async (event: Event) => {
       statusCode: 200,
       headers: {
         'Content-Type': 'image/jpeg',
+        'Cache-Control': 'max-age=31536000',
       },
       isBase64Encoded: true,
       body: base64,
@@ -138,6 +140,7 @@ export const handler = async (event: Event) => {
         statusCode: 200,
         headers: {
           'Content-Type': 'application/json',
+          'Cache-Control': 'max-age=31536000',
         },
         body: JSON.stringify(metadata),
       }
@@ -171,6 +174,7 @@ export const handler = async (event: Event) => {
         statusCode: 200,
         headers: {
           'Content-Type': 'image/jpeg',
+          'Cache-Control': 'max-age=31536000',
         },
         isBase64Encoded: true,
         body: base64,
@@ -206,6 +210,7 @@ export const handler = async (event: Event) => {
       statusCode: 200,
       headers: {
         'Content-Type': 'video/mp4',
+        'Cache-Control': 'max-age=31536000',
       },
       isBase64Encoded: true,
       body: base64,
