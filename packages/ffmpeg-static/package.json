@@ -31,7 +31,7 @@
     "@derhuerst/http-basic": "^8.2.0",
     "any-shell-escape": "^0.1.1",
     "env-paths": "^2.2.0",
-    "eslint": "^7.2.0",
+    "eslint": "^7.14.0",
     "https-proxy-agent": "^5.0.0",
     "progress": "^2.0.3",
     "tape": "^5.0.1"

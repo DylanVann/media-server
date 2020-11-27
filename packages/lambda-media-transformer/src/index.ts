@@ -147,7 +147,7 @@ export const handler = async (event: Event) => {
     if (imageFormats.includes(format as Format)) {
       const screenshotPath = tempy.file({ extension: 'png' })
       const { dir, base } = path.parse(screenshotPath)
-      await new Promise((resolve, reject) =>
+      await new Promise<void>((resolve, reject) =>
         ffmpeg
           .clone()
           .input(inputPath)
